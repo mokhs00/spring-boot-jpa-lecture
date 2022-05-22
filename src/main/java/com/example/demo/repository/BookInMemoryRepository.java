@@ -12,16 +12,6 @@ public class BookInMemoryRepository implements BookRepository{
     private final List<Book> bookList = new ArrayList<>();
     private Long bookNextId = 1L;
 
-    public BookInMemoryRepository() {
-        init();
-    }
-
-    public void init() {
-        this.bookList.clear();
-        this.bookNextId = 1L;
-        this.save(new Book("스프링 완전 정복", 1L));
-    }
-
     @Override
     public List<Book> findAll() {
         return this.bookList;
