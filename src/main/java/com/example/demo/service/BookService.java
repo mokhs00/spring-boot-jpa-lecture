@@ -42,5 +42,4 @@ public class BookService {
     public void removeById(Long bookId) {
         this.bookRepository.deleteById(bookId);
     }
-
 }

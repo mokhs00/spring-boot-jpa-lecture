@@ -5,7 +5,6 @@ import com.example.demo.dto.BookResponse;
 import com.example.demo.dto.CreateBookRequest;
 import com.example.demo.dto.UpdateBookRequest;
 import com.example.demo.service.BookService;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +23,7 @@ public class BookRestController {
     @GetMapping()
     public List<BookResponse> findAll() {
         return this.bookService.findAll().stream()
-                .map(book -> new BookResponse(book))
+                .map(BookResponse::new)
                 .collect(Collectors.toList());
     }
 
@@ -41,9 +40,7 @@ public class BookRestController {
 
     @PostMapping()
     public Long save(@RequestBody CreateBookRequest request) {
-        Long savedBookId = this.bookService.save(request);
-
-        return savedBookId;
+        return this.bookService.save(request);
     }
 
     @PostMapping("/{bookId}")
