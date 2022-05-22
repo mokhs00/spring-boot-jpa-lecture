@@ -16,6 +16,11 @@ public class Book {
         this.authorId = authorId;
     }
 
+    public void updateInfo(String title, Long authorId) {
+        this.title = title;
+        this.authorId = authorId;
+    }
+
     public Long getId() {
         return id;
     }
