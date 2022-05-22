@@ -1,6 +1,8 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.Book;
+import com.example.demo.dto.CreateBookRequest;
+import com.example.demo.dto.UpdateBookRequest;
 import com.example.demo.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
@@ -20,15 +22,24 @@ public class BookService {
 
     public Book findById(Long bookId) {
         return this.bookRepository.findById(bookId)
-                .orElseThrow(() -> new IllegalArgumentException("not exist book id: '"+ bookId + "'"));
+                .orElseThrow(() -> new IllegalArgumentException("not exist book id: '" + bookId + "'"));
     }
 
-    public Long save(Book book) {
+    public Long save(CreateBookRequest request) {
+        Book book = new Book(request.getTitle(), request.getAuthorId());
         Book savedBook = this.bookRepository.save(book);
         return savedBook.getId();
     }
 
-    public void deleteById(Long bookId) {
+    public Long update(Long bookId, UpdateBookRequest request) {
+        Book book = this.findById(bookId);
+        book.updateInfo(request.getTitle(), request.getAuthorId());
+
+        Book savedBook = this.bookRepository.save(book);
+        return savedBook.getId();
+    }
+
+    public void removeById(Long bookId) {
         this.bookRepository.deleteById(bookId);
     }
 
