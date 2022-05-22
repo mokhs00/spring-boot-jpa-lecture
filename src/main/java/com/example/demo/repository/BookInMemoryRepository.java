@@ -36,8 +36,16 @@ public class BookInMemoryRepository implements BookRepository{
 
     @Override
     public Book save(Book book) {
+        if (book.getId() != null) {
+            Book targetBook = this.findById(book.getId()).orElseThrow();
+            targetBook.updateInfo(targetBook.getTitle(), targetBook.getAuthorId());
+
+            return targetBook;
+        }
+
         Book savedBook = new Book(bookNextId++, book.getTitle(), book.getAuthorId());
         this.bookList.add(savedBook);
+
         return savedBook;
     }
 
