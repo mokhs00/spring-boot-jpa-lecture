@@ -31,7 +31,7 @@ public class BookService {
         return savedBook.getId();
     }
 
-    public Long update(Long bookId, UpdateBookRequest request) {
+    public Long updateById(Long bookId, UpdateBookRequest request) {
         Book book = this.findById(bookId);
         book.updateInfo(request.getTitle(), request.getAuthorId());
 

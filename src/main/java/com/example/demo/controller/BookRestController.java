@@ -49,7 +49,7 @@ public class BookRestController {
             @RequestBody UpdateBookRequest request
     ) {
         try {
-            Long savedBookId = this.bookService.update(bookId, request);
+            Long savedBookId = this.bookService.updateById(bookId, request);
 
             return ResponseEntity.ok(savedBookId);
         } catch (Exception e) {
