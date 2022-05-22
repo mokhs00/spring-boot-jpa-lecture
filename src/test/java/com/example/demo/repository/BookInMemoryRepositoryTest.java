@@ -2,15 +2,16 @@ package com.example.demo.repository;
 
 import com.example.demo.domain.Book;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 class BookInMemoryRepositoryTest {
 
-
     @Test
-    void findAll_success() {
+    @DisplayName("success")
+    void findAll() {
         // given
         BookInMemoryRepository bookInMemoryRepository = new BookInMemoryRepository();
         long authorId = 1L;
@@ -24,7 +25,8 @@ class BookInMemoryRepositoryTest {
     }
 
     @Test
-    void findById_success() {
+    @DisplayName("success")
+    void findById() {
         // given
         BookInMemoryRepository bookInMemoryRepository = new BookInMemoryRepository();
         long authorId = 1L;
@@ -41,6 +43,7 @@ class BookInMemoryRepositoryTest {
     }
 
     @Test
+    @DisplayName("success: 새로운 Book 저장 시 id 자동 추가")
     void save_success_새로운_book_저장_시_id_자동_입력() {
         // given
         BookInMemoryRepository bookInMemoryRepository = new BookInMemoryRepository();
@@ -54,7 +57,8 @@ class BookInMemoryRepositoryTest {
     }
 
     @Test
-    void deleteById_success() {
+    @DisplayName("success")
+    void deleteById() {
         // given
         BookInMemoryRepository bookInMemoryRepository = new BookInMemoryRepository();
         bookInMemoryRepository.save(new Book(1L, "update-title", 2L));
