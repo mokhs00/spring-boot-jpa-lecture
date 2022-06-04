@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.domain.Book;
 import com.example.demo.dto.CreateBookRequest;
 import com.example.demo.dto.UpdateBookRequest;
+import com.example.demo.repository.BookJpaRepository;
 import com.example.demo.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +11,9 @@ import java.util.List;
 
 @Service
 public class BookService {
-    private final BookRepository bookRepository;
+    private final BookJpaRepository bookRepository;
 
-    public BookService(BookRepository bookRepository) {
+    public BookService(BookJpaRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 
