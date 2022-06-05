@@ -4,7 +4,6 @@ import com.example.demo.domain.Book;
 import com.example.demo.dto.CreateBookRequest;
 import com.example.demo.dto.UpdateBookRequest;
 import com.example.demo.repository.BookJpaRepository;
-import com.example.demo.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
